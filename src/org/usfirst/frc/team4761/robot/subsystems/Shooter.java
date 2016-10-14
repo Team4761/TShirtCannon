@@ -18,6 +18,5 @@ public class Shooter extends Subsystem {
     public void shoot() {
     	//TODO: Implement shooting
     }
-    
 }
 

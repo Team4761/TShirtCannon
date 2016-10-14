@@ -5,7 +5,7 @@ import org.usfirst.frc.team4761.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * A Command used for shooting the cannon
+ * A Command used for shooting the t-shirt cannon.
  */
 public class Shoot extends Command {
 
@@ -31,6 +31,6 @@ public class Shoot extends Command {
     }
 
     protected void interrupted() {
-    	
+    	end();
     }
 }

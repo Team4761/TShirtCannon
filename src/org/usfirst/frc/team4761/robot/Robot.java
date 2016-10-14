@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team4761.robot;
 
+import org.usfirst.frc.team4761.robot.subsystems.PneumaticsSubsystem;
 import org.usfirst.frc.team4761.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -20,6 +21,7 @@ public class Robot extends IterativeRobot {
 
 	public static OI oi;
 	public static Shooter shooter;
+	public static PneumaticsSubsystem pneumatics;
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -31,6 +33,7 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
 		shooter = new Shooter();
+		pneumatics = new PneumaticsSubsystem();
     }
 	
 	/**

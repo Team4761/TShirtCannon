@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4761.robot;
 
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.TalonSRX;
 
 /**
@@ -16,4 +17,7 @@ public class RobotMap {
 	public static TalonSRX backRight = new TalonSRX(2);
 	
 	public static RobotDrive robotDrive = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
+	
+	public static Solenoid solenoid1 = new Solenoid(5); // TEMP PORT
+	public static Solenoid solenoid2 = new Solenoid(6);
 }

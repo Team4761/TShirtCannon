@@ -1,7 +1,5 @@
 package org.usfirst.frc.team4761.robot;
 
-import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
-
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.TalonSRX;
 
@@ -18,6 +16,4 @@ public class RobotMap {
 	public static TalonSRX backRight = new TalonSRX(2);
 	
 	public static RobotDrive robotDrive = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
-	
-	public static DriveTrain driveTrain = new DriveTrain();
 }

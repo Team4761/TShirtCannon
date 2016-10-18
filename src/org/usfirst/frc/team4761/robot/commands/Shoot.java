@@ -11,6 +11,7 @@ public class Shoot extends Command {
 
     public Shoot() {
         requires(Robot.shooter);
+        requires(Robot.pneumatics);
     }
 
     protected void initialize() {
@@ -25,7 +26,6 @@ public class Shoot extends Command {
         return false;
     }
 
-    // Called once after isFinished returns true
     protected void end() {
     	
     }

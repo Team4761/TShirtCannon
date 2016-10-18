@@ -2,6 +2,7 @@ package org.usfirst.frc.team4761.robot;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.TalonSRX;
 
 /**
@@ -21,4 +22,7 @@ public class RobotMap {
 	// Dummy ports on the encoders for now
 	public static Encoder barrelRotationEncoder = new Encoder(0, 1);
 	public static Encoder barrelAngleEncoder = new Encoder(2, 3);
+
+	public static Solenoid solenoid1 = new Solenoid(5); // TEMP PORT
+	public static Solenoid solenoid2 = new Solenoid(6);
 }

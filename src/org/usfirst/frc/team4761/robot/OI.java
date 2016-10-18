@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4761.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -10,4 +9,3 @@ import edu.wpi.first.wpilibj.buttons.Button;
 public class OI {
 	public static Joystick joystick = new Joystick(0);
 }
-

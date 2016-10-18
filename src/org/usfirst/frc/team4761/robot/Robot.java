@@ -1,12 +1,14 @@
 
 package org.usfirst.frc.team4761.robot;
 
+import org.usfirst.frc.team4761.robot.subsystems.PneumaticsSubsystem;
+import org.usfirst.frc.team4761.robot.subsystems.Shooter;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -18,6 +20,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static OI oi;
+	public static Shooter shooter;
+	public static PneumaticsSubsystem pneumatics;
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -28,6 +32,8 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
+		shooter = new Shooter();
+		pneumatics = new PneumaticsSubsystem();
     }
 	
 	/**
@@ -64,6 +70,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
+    	
     }
 
     /**

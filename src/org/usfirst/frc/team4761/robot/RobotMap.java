@@ -19,6 +19,10 @@ public class RobotMap {
 	
 	public static RobotDrive robotDrive = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
 	
+	// Dummy ports on the encoders for now
+	public static Encoder barrelRotationEncoder = new Encoder(0, 1);
+	public static Encoder barrelAngleEncoder = new Encoder(2, 3);
+
 	public static Solenoid solenoid1 = new Solenoid(5); // TEMP PORT
 	public static Solenoid solenoid2 = new Solenoid(6);
 	

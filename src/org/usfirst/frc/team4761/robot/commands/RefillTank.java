@@ -26,18 +26,17 @@ public class RefillTank extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	solenoid2.set(true);
+    	Robot.pneumatics.shooterFill(solenoid2);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	Timer.delay(3); // This will change
         return true;
     }
-
+    
     // Called once after isFinished returns true
     protected void end() {
-    	solenoid2.set(false);
+    	
     }
 
     // Called when another command which requires one or more of the same

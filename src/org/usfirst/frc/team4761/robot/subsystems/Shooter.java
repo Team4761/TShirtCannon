@@ -2,6 +2,7 @@ package org.usfirst.frc.team4761.robot.subsystems;
 
 import org.usfirst.frc.team4761.robot.DummyPIDOutput;
 import org.usfirst.frc.team4761.robot.EncoderPIDSource;
+import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.XAxisRelativeDirection;
 
@@ -33,8 +34,7 @@ public class Shooter extends Subsystem {
     }
     
     public void shoot(Solenoid solenoid) {
-    	// TODO: Implement shooting
-    	
+    	Robot.pneumatics.shooterFill(solenoid);
     }
     
     public void rotate(XAxisRelativeDirection direction) {

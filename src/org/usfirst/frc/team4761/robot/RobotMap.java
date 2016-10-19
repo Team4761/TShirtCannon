@@ -22,6 +22,8 @@ public class RobotMap {
 	// Dummy ports on the encoders for now
 	public static Encoder barrelRotationEncoder = new Encoder(0, 1);
 	public static Encoder barrelAngleEncoder = new Encoder(2, 3);
+	
+	public static TalonSRX barrelRotationMotor = new TalonSRX(4);
 
 	public static Solenoid solenoid1 = new Solenoid(5); // TEMP PORT
 	public static Solenoid solenoid2 = new Solenoid(6);

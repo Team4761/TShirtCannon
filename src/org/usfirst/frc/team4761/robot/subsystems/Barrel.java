@@ -33,5 +33,14 @@ public class Barrel extends PIDSubsystem {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void rotate(XAxisRelativeDirection direction, double speed) {
+		if(direction == XAxisRelativeDirection.LEFT) {
+			RobotMap.barrelRotationMotor.set(-speed);
+		}
+		else if(direction == XAxisRelativeDirection.RIGHT) {
+			RobotMap.barrelRotationMotor.set(speed);
+		}
+	}
 }
 

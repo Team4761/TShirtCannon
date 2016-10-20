@@ -39,6 +39,11 @@ public class Shooter extends Subsystem {
     
     public void rotate(XAxisRelativeDirection direction) {
     	// TODO: Implement turning (must be very precise)
+    	if (direction == XAxisRelativeDirection.LEFT) {
+    		RobotMap.barrelRotationMotor.set(-controller.get()); // Subject to change
+    	} else {
+    		RobotMap.barrelRotationMotor.set(controller.get()); 
+    	}
     }
 }
 

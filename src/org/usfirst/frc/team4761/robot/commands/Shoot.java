@@ -1,7 +1,9 @@
 package org.usfirst.frc.team4761.robot.commands;
 
 import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -19,11 +21,12 @@ public class Shoot extends Command {
     }
 
     protected void execute() {
-    	
+    	Robot.pneumatics.shooterFill(RobotMap.solenoid1);
     }
 
     protected boolean isFinished() {
-        return false;
+    	Timer.delay(3);
+        return true;
     }
 
     protected void end() {

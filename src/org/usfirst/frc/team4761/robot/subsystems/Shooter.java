@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4761.robot.DummyPIDOutput;
 import org.usfirst.frc.team4761.robot.EncoderPIDSource;
 import org.usfirst.frc.team4761.robot.Robot;
@@ -16,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Shooter extends Subsystem {
 	
-	public final PIDController controller;
+	public static PIDController controller;
 
 	public Shooter() {
 		controller = new PIDController(0, 0, 0, 
@@ -25,7 +26,12 @@ public class Shooter extends Subsystem {
 		controller.disable();
 		controller.setOutputRange(-1.0, 1.0);
 		controller.setPercentTolerance(5.0); // This is subject to change
-		
+
+		SmartDashboard.putNumber("AngleP", controller.getP());
+		SmartDashboard.putNumber("AngleI", controller.getI());
+		SmartDashboard.putNumber("AngleD", controller.getD());
+		SmartDashboard.putNumber("AngleSetpoint", 0);
+		SmartDashboard.putBoolean("AnglePIDGo", false);
 	}
 	
     public void initDefaultCommand() {

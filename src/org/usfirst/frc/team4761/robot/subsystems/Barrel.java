@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4761.robot.DummyPIDOutput;
 import org.usfirst.frc.team4761.robot.EncoderPIDSource;
 import org.usfirst.frc.team4761.robot.RobotMap;
@@ -15,7 +16,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Barrel extends Subsystem {
 	
-	public final PIDController controller;
+	public static PIDController controller;
 	
 	Encoder angleEncoder = RobotMap.barrelAngleEncoder;
 	
@@ -26,6 +27,13 @@ public class Barrel extends Subsystem {
     	controller.disable();
 		controller.setOutputRange(-1.0, 1.0);
 		controller.setPercentTolerance(5.0); // This is subject to change
+
+		SmartDashboard.putNumber("RotationP", controller.getP());
+		SmartDashboard.putNumber("RotationI", controller.getI());
+		SmartDashboard.putNumber("RotationD", controller.getD());
+		SmartDashboard.putNumber("RotationSetpoint", 0);
+
+		SmartDashboard.putBoolean("RotationPIDGo", false);
 	}
 
 	public void initDefaultCommand() {

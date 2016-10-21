@@ -1,7 +1,9 @@
 
 package org.usfirst.frc.team4761.robot;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4761.robot.commands.GasGo;
+import org.usfirst.frc.team4761.robot.commands.Shoot;
 import org.usfirst.frc.team4761.robot.subsystems.Barrel;
 import org.usfirst.frc.team4761.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team4761.robot.subsystems.PneumaticsSubsystem;
@@ -87,6 +89,25 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+
+		// This location is temporary
+		Shooter.controller.setPID(SmartDashboard.getNumber("AngleP", 0), SmartDashboard.getNumber("AngleI", 0), SmartDashboard.getNumber("AngleD", 0));
+		Shooter.controller.setSetpoint(SmartDashboard.getNumber("AngleSetpoint", 0));
+
+		Barrel.controller.setPID(SmartDashboard.getNumber("RotationP", 0), SmartDashboard.getNumber("RotationI", 0), SmartDashboard.getNumber("RotationD", 0));
+		Barrel.controller.setSetpoint(SmartDashboard.getNumber("RotationSetpoint", 0));
+
+		if (SmartDashboard.getBoolean("AnglePIDGo", false) && Shooter.controller.isEnabled()) {
+			Shooter.controller.enable();
+		} else {
+			Shooter.controller.disable();
+		}
+
+		if (SmartDashboard.getBoolean("RotationPIDGo", false) && Barrel.controller.isEnabled()) {
+			Barrel.controller.enable();
+		} else {
+			Barrel.controller.disable();
+		}
     }
     
     /**

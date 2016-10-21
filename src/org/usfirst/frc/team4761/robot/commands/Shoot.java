@@ -21,7 +21,7 @@ public class Shoot extends Command {
     }
 
     protected void execute() {
-    	Robot.pneumatics.shooterFill(RobotMap.solenoid1);
+    	Robot.shooter.shoot(RobotMap.solenoid1);
     }
 
     protected boolean isFinished() {

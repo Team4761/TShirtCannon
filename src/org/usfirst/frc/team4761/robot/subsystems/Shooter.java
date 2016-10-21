@@ -4,12 +4,11 @@ import org.usfirst.frc.team4761.robot.DummyPIDOutput;
 import org.usfirst.frc.team4761.robot.EncoderPIDSource;
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
-import org.usfirst.frc.team4761.robot.XAxisRelativeDirection;
+import org.usfirst.frc.team4761.robot.ZAxisRelativeDirection;
 
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -21,7 +20,7 @@ public class Shooter extends Subsystem {
 
 	public Shooter() {
 		controller = new PIDController(0, 0, 0, 
-		new EncoderPIDSource(RobotMap.shooterEncoder, 1, PIDSourceType.kDisplacement), new DummyPIDOutput());
+		new EncoderPIDSource(RobotMap.barrelAngleEncoder, 1, PIDSourceType.kDisplacement), new DummyPIDOutput());
 		
 		controller.disable();
 		controller.setOutputRange(-1.0, 1.0);
@@ -37,12 +36,14 @@ public class Shooter extends Subsystem {
     	Robot.pneumatics.shooterFill(solenoid);
     }
     
-    public void rotate(XAxisRelativeDirection direction) {
+    public void rotate(ZAxisRelativeDirection direction) {
     	// TODO: Implement turning (must be very precise)
-    	if (direction == XAxisRelativeDirection.LEFT) {
-    		RobotMap.barrelRotationMotor.set(-controller.get()); // Subject to change
+    	if (direction == ZAxisRelativeDirection.UP) {
+    		controller.setSetpoint(controller.getSetpoint() + 10);
+    		RobotMap.barrelAngleMotor.set(-controller.get()); // Subject to change
     	} else {
-    		RobotMap.barrelRotationMotor.set(controller.get()); 
+    		controller.setSetpoint(controller.getSetpoint() - 10);
+    		RobotMap.barrelAngleMotor.set(controller.get()); 
     	}
     }
 }

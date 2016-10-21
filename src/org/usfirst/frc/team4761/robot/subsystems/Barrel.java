@@ -3,7 +3,7 @@ package org.usfirst.frc.team4761.robot.subsystems;
 import org.usfirst.frc.team4761.robot.DummyPIDOutput;
 import org.usfirst.frc.team4761.robot.EncoderPIDSource;
 import org.usfirst.frc.team4761.robot.RobotMap;
-import org.usfirst.frc.team4761.robot.ZAxisRelativeDirection;
+import org.usfirst.frc.team4761.robot.XAxisRelativeDirection;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- * @author Simon Andrews
+ * @author Simon Andrews and Jake Backer (but mostly Jake Backer)
  */
 public class Barrel extends Subsystem {
 	
@@ -21,7 +21,7 @@ public class Barrel extends Subsystem {
 	
     public Barrel() {
     	controller = new PIDController(0, 0, 0, 
-    	new EncoderPIDSource(RobotMap.angleEncoder, 1, PIDSourceType.kDisplacement), new DummyPIDOutput());
+    	new EncoderPIDSource(RobotMap.barrelRotationEncoder, 1, PIDSourceType.kDisplacement), new DummyPIDOutput());
     	
     	controller.disable();
 		controller.setOutputRange(-1.0, 1.0);
@@ -32,12 +32,13 @@ public class Barrel extends Subsystem {
 		
     }
 	
-	public void rotate(ZAxisRelativeDirection direction, double speed) {
-		if(direction == ZAxisRelativeDirection.UP) {
-			RobotMap.barrelAngleMotor.set(-speed);
-		}
-		else if(direction == ZAxisRelativeDirection.DOWN) {
-			RobotMap.barrelAngleMotor.set(speed);
+	public void rotate(XAxisRelativeDirection direction) {
+		if(direction == XAxisRelativeDirection.LEFT) {
+			controller.setSetpoint(controller.getSetpoint()-1);
+			RobotMap.barrelRotationMotor.set(-controller.get());
+		} else {
+			controller.setSetpoint(controller.getSetpoint()+1);
+			RobotMap.barrelRotationMotor.set(controller.get());
 		}
 	}
 }

@@ -28,7 +28,4 @@ public class RobotMap {
 
 	public static Solenoid solenoid1 = new Solenoid(5); // TEMP PORT
 	public static Solenoid solenoid2 = new Solenoid(6);
-	
-	public static Encoder shooterEncoder = new Encoder(7, 8); // Ports maybe
-	public static Encoder angleEncoder = new Encoder(10, 11);
 }

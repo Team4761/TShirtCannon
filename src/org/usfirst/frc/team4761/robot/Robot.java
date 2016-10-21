@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team4761.robot;
 
+import org.usfirst.frc.team4761.robot.subsystems.Barrel;
 import org.usfirst.frc.team4761.robot.subsystems.PneumaticsSubsystem;
 import org.usfirst.frc.team4761.robot.subsystems.Shooter;
 
@@ -22,6 +23,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Shooter shooter;
 	public static PneumaticsSubsystem pneumatics;
+	public static Barrel barrel;
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -34,6 +36,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		shooter = new Shooter();
 		pneumatics = new PneumaticsSubsystem();
+		barrel = new Barrel();
     }
 	
 	/**
@@ -42,7 +45,7 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
      */
     public void disabledInit(){
-
+    	
     }
 	
 	public void disabledPeriodic() {

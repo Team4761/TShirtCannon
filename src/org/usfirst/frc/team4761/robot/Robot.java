@@ -2,6 +2,7 @@
 package org.usfirst.frc.team4761.robot;
 
 import org.usfirst.frc.team4761.robot.subsystems.Barrel;
+import org.usfirst.frc.team4761.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team4761.robot.subsystems.PneumaticsSubsystem;
 import org.usfirst.frc.team4761.robot.subsystems.Shooter;
 
@@ -24,6 +25,7 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter;
 	public static PneumaticsSubsystem pneumatics;
 	public static Barrel barrel;
+	public static Drivetrain drivetrain;
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -37,6 +39,7 @@ public class Robot extends IterativeRobot {
 		shooter = new Shooter();
 		pneumatics = new PneumaticsSubsystem();
 		barrel = new Barrel();
+		drivetrain = new Drivetrain();
     }
 	
 	/**
@@ -81,7 +84,6 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        RobotMap.robotDrive.arcadeDrive(OI.joystick);
     }
     
     /**

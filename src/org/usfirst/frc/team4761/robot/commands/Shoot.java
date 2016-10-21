@@ -17,11 +17,11 @@ public class Shoot extends Command {
     }
 
     protected void initialize() {
-    	
+        Robot.shooter.shoot(RobotMap.solenoid1);
     }
 
     protected void execute() {
-    	Robot.shooter.shoot(RobotMap.solenoid1);
+        
     }
 
     protected boolean isFinished() {

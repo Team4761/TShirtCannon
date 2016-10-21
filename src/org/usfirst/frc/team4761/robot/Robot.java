@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team4761.robot;
 
+import org.usfirst.frc.team4761.robot.commands.GasGo;
 import org.usfirst.frc.team4761.robot.subsystems.Barrel;
 import org.usfirst.frc.team4761.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team4761.robot.subsystems.PneumaticsSubsystem;
@@ -28,6 +29,7 @@ public class Robot extends IterativeRobot {
 	public static Drivetrain drivetrain;
 
     Command autonomousCommand;
+    Command gasGo;
     SendableChooser chooser;
 
     /**
@@ -40,6 +42,7 @@ public class Robot extends IterativeRobot {
 		pneumatics = new PneumaticsSubsystem();
 		barrel = new Barrel();
 		drivetrain = new Drivetrain();
+		gasGo = new GasGo();
     }
 	
 	/**
@@ -76,7 +79,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
-    	
+    	gasGo.start();
     }
 
     /**

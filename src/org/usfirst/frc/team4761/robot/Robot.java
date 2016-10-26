@@ -2,7 +2,11 @@
 package org.usfirst.frc.team4761.robot;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team4761.robot.commands.AdjustShooterAngle;
 import org.usfirst.frc.team4761.robot.commands.GasGo;
+import org.usfirst.frc.team4761.robot.commands.RotateBarrel;
+import org.usfirst.frc.team4761.robot.commands.Shoot;
 import org.usfirst.frc.team4761.robot.subsystems.Barrel;
 import org.usfirst.frc.team4761.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team4761.robot.subsystems.PneumaticsSubsystem;
@@ -88,6 +92,11 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        SmartDashboard.putData("Shoot", new Shoot());
+        SmartDashboard.putData("Rotate Barrel Left", new RotateBarrel(XAxisRelativeDirection.LEFT));
+        SmartDashboard.putData("Rotate Barrel Right", new RotateBarrel(XAxisRelativeDirection.RIGHT));
+        SmartDashboard.putData("Shooter up", new AdjustShooterAngle(ZAxisRelativeDirection.UP));
+        SmartDashboard.putData("Shooter down", new AdjustShooterAngle(ZAxisRelativeDirection.DOWN));
 
 		// This location is temporary
 		Shooter.controller.setPID(SmartDashboard.getNumber("AngleP", 0), SmartDashboard.getNumber("AngleI", 0), SmartDashboard.getNumber("AngleD", 0));

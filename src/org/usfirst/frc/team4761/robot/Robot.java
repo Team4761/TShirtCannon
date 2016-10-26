@@ -3,7 +3,6 @@ package org.usfirst.frc.team4761.robot;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4761.robot.commands.GasGo;
-import org.usfirst.frc.team4761.robot.commands.Shoot;
 import org.usfirst.frc.team4761.robot.subsystems.Barrel;
 import org.usfirst.frc.team4761.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team4761.robot.subsystems.PneumaticsSubsystem;

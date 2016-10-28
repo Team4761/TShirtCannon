@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 /**
+ * @author Brian Shin
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
  * documentation. If you change the name of this class or the package after
@@ -33,8 +34,11 @@ public class Robot extends IterativeRobot {
 	public static Barrel barrel;
 	public static Drivetrain drivetrain;
 
-    Command autonomousCommand;
     Command gasGo;
+	Command adjustUp;
+	Command adjustDown;
+	Command rotateLeft;
+	Command rotateRight;
     SendableChooser chooser;
 
     /**
@@ -48,6 +52,10 @@ public class Robot extends IterativeRobot {
 		barrel = new Barrel();
 		drivetrain = new Drivetrain();
 		gasGo = new GasGo();
+		adjustUp = new AdjustShooterAngle(ZAxisRelativeDirection.UP);
+		adjustDown = new AdjustShooterAngle(ZAxisRelativeDirection.DOWN);
+		rotateLeft = new RotateBarrel(XAxisRelativeDirection.LEFT);
+		rotateRight = new RotateBarrel(XAxisRelativeDirection.RIGHT);
     }
 	
 	/**
@@ -73,7 +81,7 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-       
+       gasGo.cancel();
     }
 
     /**
@@ -115,6 +123,22 @@ public class Robot extends IterativeRobot {
 			Barrel.controller.enable();
 		} else {
 			Barrel.controller.disable();
+		}
+
+		if (OI.joystick.getRawButton(0)) { // Shooter down
+			adjustDown.start();
+		}
+
+		if (OI.joystick.getRawButton(3)) { // Shooter up
+			adjustUp.start();
+		}
+
+		if (OI.joystick.getRawButton(4)) { // Rotate left
+			rotateLeft.start();
+		}
+
+		if (OI.joystick.getRawButton(5)) { // Rotate right
+			rotateRight.start();
 		}
     }
     

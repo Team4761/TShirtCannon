@@ -54,6 +54,7 @@ public class Barrel extends Subsystem {
 	}
 
 	public void rotatePID(XAxisRelativeDirection direction) {
+		controller.setPID(SmartDashboard.getNumber("RotationP"),SmartDashboard.getNumber("RotationI"),SmartDashboard.getNumber("RotationD"));
 		controller.enable();
 		if (direction == XAxisRelativeDirection.LEFT) {
 			controller.setSetpoint(controller.getSetpoint()-10); // Subject to change
@@ -62,6 +63,12 @@ public class Barrel extends Subsystem {
 			controller.setSetpoint(controller.getSetpoint() + 10); // Subject to change
 			RobotMap.barrelRotationMotor.set(controller.get());
 		}
+	}
+
+	public void startPID() {
+		controller.setPID(SmartDashboard.getNumber("RotationP"),SmartDashboard.getNumber("RotationI"),SmartDashboard.getNumber("RotationD"));
+		controller.setSetpoint(SmartDashboard.getNumber("RotationSetpoint"));
+		controller.enable();
 	}
 
 	public void stop() {

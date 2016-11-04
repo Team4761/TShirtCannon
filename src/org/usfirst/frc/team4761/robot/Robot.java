@@ -2,10 +2,7 @@ package org.usfirst.frc.team4761.robot;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team4761.robot.commands.AdjustShooterAngle;
-import org.usfirst.frc.team4761.robot.commands.GasGo;
-import org.usfirst.frc.team4761.robot.commands.RotateBarrel;
-import org.usfirst.frc.team4761.robot.commands.Shoot;
+import org.usfirst.frc.team4761.robot.commands.*;
 import org.usfirst.frc.team4761.robot.subsystems.Barrel;
 import org.usfirst.frc.team4761.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team4761.robot.subsystems.PneumaticsSubsystem;
@@ -96,6 +93,7 @@ public class Robot extends IterativeRobot {
 
 		SmartDashboard.putData("Angle Up", new AdjustShooterAngle(ZAxisRelativeDirection.UP));
 		SmartDashboard.putData("Angle Down", new AdjustShooterAngle(ZAxisRelativeDirection.DOWN));
+		SmartDashboard.putData("Start PID", new PIDGo());
     }
 
     /**

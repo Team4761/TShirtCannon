@@ -1,4 +1,3 @@
-
 package org.usfirst.frc.team4761.robot;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;

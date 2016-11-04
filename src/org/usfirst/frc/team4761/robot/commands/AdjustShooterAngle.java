@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4761.robot.commands;
 
 import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.ZAxisRelativeDirection;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -11,27 +12,37 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AdjustShooterAngle extends Command {
 
-	ZAxisRelativeDirection direction;
-	
+    ZAxisRelativeDirection direction;
+
+    boolean stop;
+
     public AdjustShooterAngle(ZAxisRelativeDirection direction) {
     	requires(Robot.shooter);
-    	this.direction = direction;
+        this.direction = direction;
+    }
+
+    public AdjustShooterAngle(boolean stop) {
+        this.stop = stop;
     }
 
     protected void initialize() {
-    	Robot.shooter.rotate(direction);
+        setTimeout(1);
     }
 
     protected void execute() {
-    	
+        /*if (stop) {
+            Robot.shooter.stop();
+        } else {*/
+            Robot.shooter.changeAngle(direction);
+        //}
     }
 
     protected boolean isFinished() {
-        return true;
+        return isTimedOut();
     }
 
     protected void end() {
-    	
+        RobotMap.barrelAngleMotor.set(0);
     }
 
     protected void interrupted() {

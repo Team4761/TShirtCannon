@@ -1,8 +1,11 @@
 
 package org.usfirst.frc.team4761.robot;
 
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team4761.robot.commands.AdjustShooterAngle;
 import org.usfirst.frc.team4761.robot.commands.GasGo;
+import org.usfirst.frc.team4761.robot.commands.RotateBarrel;
 import org.usfirst.frc.team4761.robot.commands.Shoot;
 import org.usfirst.frc.team4761.robot.subsystems.Barrel;
 import org.usfirst.frc.team4761.robot.subsystems.Drivetrain;
@@ -32,6 +35,7 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
     Command gasGo;
+	//Command adjustAngle;
     SendableChooser chooser;
 
     /**
@@ -45,6 +49,7 @@ public class Robot extends IterativeRobot {
 		barrel = new Barrel();
 		drivetrain = new Drivetrain();
 		gasGo = new GasGo();
+		//adjustAngle = new AdjustShooterAngle();
     }
 	
 	/**
@@ -81,7 +86,17 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
+		NetworkTable.flush();
     	gasGo.start();
+		//adjustAngle.start();
+		SmartDashboard.putData(new Shoot());
+		//SmartDashboard.putData(new RotateBarrel());
+		SmartDashboard.putData("Rotate Left", new RotateBarrel(XAxisRelativeDirection.LEFT));
+		SmartDashboard.putData("Rotate Right", new RotateBarrel(XAxisRelativeDirection.RIGHT));
+		SmartDashboard.putData("Rotate Stop", new RotateBarrel(true)); // Stop
+
+		SmartDashboard.putData("Angle Up", new AdjustShooterAngle(ZAxisRelativeDirection.UP));
+		SmartDashboard.putData("Angle Down", new AdjustShooterAngle(ZAxisRelativeDirection.DOWN));
     }
 
     /**
@@ -91,23 +106,16 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
 
 		// This location is temporary
-		Shooter.controller.setPID(SmartDashboard.getNumber("AngleP", 0), SmartDashboard.getNumber("AngleI", 0), SmartDashboard.getNumber("AngleD", 0));
-		Shooter.controller.setSetpoint(SmartDashboard.getNumber("AngleSetpoint", 0));
-
 		Barrel.controller.setPID(SmartDashboard.getNumber("RotationP", 0), SmartDashboard.getNumber("RotationI", 0), SmartDashboard.getNumber("RotationD", 0));
 		Barrel.controller.setSetpoint(SmartDashboard.getNumber("RotationSetpoint", 0));
-
-		if (SmartDashboard.getBoolean("AnglePIDGo", false) && Shooter.controller.isEnabled()) {
-			Shooter.controller.enable();
-		} else {
-			Shooter.controller.disable();
-		}
 
 		if (SmartDashboard.getBoolean("RotationPIDGo", false) && Barrel.controller.isEnabled()) {
 			Barrel.controller.enable();
 		} else {
 			Barrel.controller.disable();
 		}
+
+		SmartDashboard.putNumber("Encoder Value", RobotMap.barrelRotationEncoder.get());
     }
     
     /**

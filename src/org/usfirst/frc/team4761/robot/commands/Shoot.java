@@ -17,7 +17,8 @@ public class Shoot extends Command {
     }
 
     protected void initialize() {
-        Robot.shooter.shoot(RobotMap.solenoid1);
+        Robot.shooter.shoot(RobotMap.solenoid);
+        setTimeout(3);
     }
 
     protected void execute() {
@@ -25,7 +26,6 @@ public class Shoot extends Command {
     }
 
     protected boolean isFinished() {
-    	Timer.delay(3);
         return true;
     }
 

@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 
 public class BarrelRotationPIDSource implements PIDSource {
 
-	Encoder encoder = RobotMap.barrelAngleEncoder;
+	Encoder encoder = RobotMap.barrelRotationEncoder;
 	double factor = 1.0;
 	
 	@Override

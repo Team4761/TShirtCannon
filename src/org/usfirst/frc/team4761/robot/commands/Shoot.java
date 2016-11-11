@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4761.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
@@ -18,7 +19,8 @@ public class Shoot extends Command {
 
     protected void initialize() {
         Robot.shooter.shoot(RobotMap.solenoid);
-        setTimeout(3);
+        setTimeout(SmartDashboard.getNumber("SolenoidTimeout"));
+        //setTimeout(0.05);
     }
 
     protected void execute() {
@@ -26,11 +28,11 @@ public class Shoot extends Command {
     }
 
     protected boolean isFinished() {
-        return true;
+        return isTimedOut();
     }
 
     protected void end() {
-    	
+    	Robot.shooter.stop(RobotMap.solenoid);
     }
 
     protected void interrupted() {

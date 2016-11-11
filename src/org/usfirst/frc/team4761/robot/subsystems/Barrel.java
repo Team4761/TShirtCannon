@@ -43,11 +43,11 @@ public class Barrel extends Subsystem {
 		if(direction == XAxisRelativeDirection.LEFT) {
 			//controller.setSetpoint(controller.getSetpoint()-1);
 			//RobotMap.barrelRotationMotor.set(-controller.get());
-			RobotMap.barrelRotationMotor.set(1);
-		} else if (direction == XAxisRelativeDirection.RIGHT){
+			RobotMap.barrelRotationMotor.set(0.7);
+		} else if (direction == XAxisRelativeDirection.RIGHT) {
 			//controller.setSetpoint(controller.getSetpoint()+1);
 			//RobotMap.barrelRotationMotor.set(controller.get());
-			RobotMap.barrelRotationMotor.set(-1);
+			RobotMap.barrelRotationMotor.set(-0.6);
 		} else {
 			RobotMap.barrelRotationMotor.set(0);
 		}

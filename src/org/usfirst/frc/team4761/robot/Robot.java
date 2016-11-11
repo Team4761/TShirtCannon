@@ -90,10 +90,13 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Rotate Left", new RotateBarrel(XAxisRelativeDirection.LEFT));
 		SmartDashboard.putData("Rotate Right", new RotateBarrel(XAxisRelativeDirection.RIGHT));
 		SmartDashboard.putData("Rotate Stop", new RotateBarrel(true)); // Stop
+		SmartDashboard.putData("Start PID", new PIDGo());
 
 		SmartDashboard.putData("Angle Up", new AdjustShooterAngle(ZAxisRelativeDirection.UP));
 		SmartDashboard.putData("Angle Down", new AdjustShooterAngle(ZAxisRelativeDirection.DOWN));
-		SmartDashboard.putData("Start PID", new PIDGo());
+
+		SmartDashboard.putNumber("SolenoidTimeout", 0.05);
+
     }
 
     /**
@@ -110,6 +113,26 @@ public class Robot extends IterativeRobot {
 			Barrel.controller.enable();
 		} else {
 			Barrel.controller.disable();
+		}
+
+		if (OI.joystick.getRawButton(1)) {
+			new AdjustShooterAngle(ZAxisRelativeDirection.DOWN);
+		}
+
+		if (OI.joystick.getRawButton(4)) {
+			new AdjustShooterAngle(ZAxisRelativeDirection.UP);
+		}
+
+		if (OI.joystick.getRawButton(2)) {
+			new RotateBarrel(XAxisRelativeDirection.RIGHT);
+		}
+
+		if (OI.joystick.getRawButton(3)) {
+			new RotateBarrel(XAxisRelativeDirection.LEFT);
+		}
+
+		if (OI.joystick.getRawButton(6)) {
+			new Shoot();
 		}
 
 		SmartDashboard.putNumber("Encoder Value", RobotMap.barrelRotationEncoder.get());

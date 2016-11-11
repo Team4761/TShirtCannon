@@ -21,7 +21,8 @@ public class Shooter extends Subsystem {
     }
     
     public void shoot(Solenoid solenoid) {
-    	Robot.pneumatics.shooterFill(solenoid);
+    	//Robot.pneumatics.shooterFill(solenoid);
+		solenoid.set(true);
     }
     
     public void changeAngle(ZAxisRelativeDirection direction) {
@@ -42,7 +43,8 @@ public class Shooter extends Subsystem {
 		}*/
     }
 
-	public void stop() {
+	public void stop(Solenoid solenoid) {
+		solenoid.set(false);
 		RobotMap.barrelAngleMotor.set(0);
 	}
 }

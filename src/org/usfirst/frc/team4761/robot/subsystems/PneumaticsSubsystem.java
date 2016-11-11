@@ -20,7 +20,7 @@ public class PneumaticsSubsystem extends Subsystem {
      */
     public void shooterFill(Solenoid solenoid) { // Michael named this
     	solenoid.set(true);
-    	Timer.delay(3); // Subject to change
+
     	solenoid.set(false);
     }
 }

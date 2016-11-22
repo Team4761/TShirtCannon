@@ -7,18 +7,20 @@ import org.usfirst.frc.team4761.robot.XAxisRelativeDirection;
 /**
  * @author Jake Backer
  */
-public class PIDGo extends Command {
+public class Rotaterotate extends Command {
 
-    public PIDGo() {
-        requires(Robot.barrel);
+    XAxisRelativeDirection direction;
+
+    public Rotaterotate(XAxisRelativeDirection direction) {
+        this.direction = direction;
     }
 
     protected void initialize() {
-        Robot.barrel.startPID();
+
     }
 
     protected void execute() {
-        Robot.barrel.rotatePID(XAxisRelativeDirection.RIGHT);
+        Robot.barrel.rotate(direction);
     }
 
     protected boolean isFinished() {
@@ -26,7 +28,7 @@ public class PIDGo extends Command {
     }
 
     protected void end() {
-        Robot.barrel.stop();
+
     }
 
     protected void interrupted() {

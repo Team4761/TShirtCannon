@@ -2,10 +2,7 @@ package org.usfirst.frc.team4761.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import org.usfirst.frc.team4761.robot.commands.AdjustShooterAngle;
-import org.usfirst.frc.team4761.robot.commands.RotateBarrel;
-import org.usfirst.frc.team4761.robot.commands.Shoot;
-import org.usfirst.frc.team4761.robot.commands.ShootNRotate;
+import org.usfirst.frc.team4761.robot.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -20,6 +17,8 @@ public class OI {
 	JoystickButton yButton = new JoystickButton(joystick, 4);
 	JoystickButton leftBumperButton = new JoystickButton(joystick, 5);
 	JoystickButton rightBumperButton = new JoystickButton(joystick, 6);
+	JoystickButton selectButton = new JoystickButton(joystick, 7);
+	JoystickButton startButton = new JoystickButton(joystick, 8);
 
 	public OI() {
 		leftBumperButton.whenReleased(new Shoot());
@@ -28,5 +27,7 @@ public class OI {
 		xButton.whenReleased(new RotateBarrel(XAxisRelativeDirection.LEFT));
 		yButton.whenReleased(new AdjustShooterAngle(ZAxisRelativeDirection.UP));
 		aButton.whenReleased(new AdjustShooterAngle(ZAxisRelativeDirection.DOWN));
+		selectButton.whileHeld(new Rotaterotate(XAxisRelativeDirection.LEFT));
+		startButton.whileHeld(new Rotaterotate(XAxisRelativeDirection.RIGHT));
 	}
 }

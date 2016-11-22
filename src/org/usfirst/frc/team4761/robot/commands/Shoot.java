@@ -14,13 +14,11 @@ public class Shoot extends Command {
 
     public Shoot() {
         requires(Robot.shooter);
-        requires(Robot.pneumatics);
     }
 
     protected void initialize() {
         Robot.shooter.shoot(RobotMap.solenoid);
         setTimeout(SmartDashboard.getNumber("SolenoidTimeout"));
-        //setTimeout(0.05);
     }
 
     protected void execute() {

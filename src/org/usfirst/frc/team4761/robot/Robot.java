@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4761.robot.commands.*;
 import org.usfirst.frc.team4761.robot.subsystems.Barrel;
 import org.usfirst.frc.team4761.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team4761.robot.subsystems.PneumaticsSubsystem;
 import org.usfirst.frc.team4761.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -25,13 +24,11 @@ public class Robot extends IterativeRobot {
 
 	public static OI oi;
 	public static Shooter shooter;
-	public static PneumaticsSubsystem pneumatics;
 	public static Barrel barrel;
 	public static Drivetrain drivetrain;
 
     Command autonomousCommand;
     Command gasGo;
-	//Command adjustAngle;
     SendableChooser chooser;
 
     /**
@@ -40,12 +37,10 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		shooter = new Shooter();
-		pneumatics = new PneumaticsSubsystem();
 		barrel = new Barrel();
 		drivetrain = new Drivetrain();
 		gasGo = new GasGo();
 		oi = new OI();
-		//adjustAngle = new AdjustShooterAngle();
     }
 	
 	/**
@@ -84,12 +79,9 @@ public class Robot extends IterativeRobot {
     public void teleopInit() {
 		NetworkTable.flush();
     	gasGo.start();
-		//adjustAngle.start();
 		SmartDashboard.putData(new Shoot());
-		//SmartDashboard.putData(new RotateBarrel());
 		SmartDashboard.putData("Rotate Left", new RotateBarrel(XAxisRelativeDirection.LEFT));
 		SmartDashboard.putData("Rotate Right", new RotateBarrel(XAxisRelativeDirection.RIGHT));
-		SmartDashboard.putData("Start PID", new PIDGo());
 
 		SmartDashboard.putData("Angle Up", new AdjustShooterAngle(ZAxisRelativeDirection.UP));
 		SmartDashboard.putData("Angle Down", new AdjustShooterAngle(ZAxisRelativeDirection.DOWN));
@@ -104,18 +96,6 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
 
-		// This location is temporary
-		//Barrel.controller.setPID(SmartDashboard.getNumber("RotationP", 0), SmartDashboard.getNumber("RotationI", 0), SmartDashboard.getNumber("RotationD", 0));
-		//Barrel.controller.setSetpoint(SmartDashboard.getNumber("RotationSetpoint", 0));
-
-		/*if (SmartDashboard.getBoolean("RotationPIDGo", false) && Barrel.controller.isEnabled()) {
-			Barrel.controller.enable();
-		} else {
-			Barrel.controller.disable();
-		}*/
-
-		SmartDashboard.putNumber("Encoder Value", RobotMap.barrelRotationEncoder.get());
-		SmartDashboard.putNumber("Encoder Value2", RobotMap.barrelRotationEncoder.get());
 		SmartDashboard.putBoolean("LimitSwitch Value", RobotMap.barrelLimitSwitch.get());
     }
     

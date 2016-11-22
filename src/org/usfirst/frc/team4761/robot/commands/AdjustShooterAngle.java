@@ -24,11 +24,7 @@ public class AdjustShooterAngle extends Command {
     }
 
     protected void execute() {
-        /*if (stop) {
-            Robot.shooter.stop();
-        } else {*/
-            Robot.shooter.changeAngle(direction);
-        //}
+        Robot.shooter.changeAngle(direction);
     }
 
     protected boolean isFinished() {

@@ -24,6 +24,6 @@ public class RobotMap {
 
 	public static Solenoid solenoid = new Solenoid(0);
 
-	public static DigitalInput barrelLimitSwitch = new DigitalInput(8);
+	public static DigitalInput barrelLimitSwitch = new DigitalInput(4);
 	
 }

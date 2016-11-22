@@ -15,10 +15,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Barrel extends Subsystem {
 	
-	public static PIDController controller;
+	//public static PIDController controller;
 
     public Barrel() {
-    	controller = new PIDController(0, 0, 0,
+    	/*controller = new PIDController(0, 0, 0,
     	new EncoderPIDSource(RobotMap.barrelRotationEncoder, 1, PIDSourceType.kDisplacement), new DummyPIDOutput());
     	
     	controller.disable();
@@ -28,7 +28,7 @@ public class Barrel extends Subsystem {
 		SmartDashboard.putNumber("RotationP", controller.getP());
 		SmartDashboard.putNumber("RotationI", controller.getI());
 		SmartDashboard.putNumber("RotationD", controller.getD());
-		SmartDashboard.putNumber("RotationSetpoint", 0);
+		SmartDashboard.putNumber("RotationSetpoint", 0);*/
 
 	}
 
@@ -44,7 +44,7 @@ public class Barrel extends Subsystem {
 		} else if (direction == XAxisRelativeDirection.RIGHT) {
 			//controller.setSetpoint(controller.getSetpoint()+1);
 			//RobotMap.barrelRotationMotor.set(controller.get());
-			RobotMap.barrelRotationMotor.set(-0.6);
+			RobotMap.barrelRotationMotor.set(-0.7);
 		} else {
 			RobotMap.barrelRotationMotor.set(0);
 		}
@@ -63,20 +63,20 @@ public class Barrel extends Subsystem {
 
 		//controller.setSetpoint(controller.getSetpoint() + 10); // Subject to change
 
-		RobotMap.barrelRotationMotor.set(controller.get());
+		//RobotMap.barrelRotationMotor.set(controller.get());
 	}
 
 	public void startPID() {
-		controller.setPID(SmartDashboard.getNumber("RotationP"),SmartDashboard.getNumber("RotationI"),SmartDashboard.getNumber("RotationD"));
+		/*controller.setPID(SmartDashboard.getNumber("RotationP"),SmartDashboard.getNumber("RotationI"),SmartDashboard.getNumber("RotationD"));
 		controller.setSetpoint(SmartDashboard.getNumber("RotationSetpoint"));
 		System.out.println(controller.getP());
 		System.out.println(controller.getSetpoint());
-		controller.enable();
+		controller.enable();*/
 
 	}
 
 	public void stop() {
-		controller.disable();
+		//controller.disable();
 		RobotMap.barrelRotationMotor.set(0);
 	}
 }

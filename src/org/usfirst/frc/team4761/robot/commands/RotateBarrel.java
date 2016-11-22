@@ -15,17 +15,23 @@ public class RotateBarrel extends Command {
 
 	private XAxisRelativeDirection direction;
 
+    private boolean started;
+    private boolean finished;
+
     //private double initialCount;
     //private final double TICKS_PER_BARREL = 442.0;
 	
     public RotateBarrel(XAxisRelativeDirection direction) {
         requires(Robot.barrel);
         this.direction = direction;
+
     }
 
     protected void initialize() {
         //setTimeout(1);
         //initialCount = RobotMap.barrelRotationEncoder.get();
+        started = true;
+        finished = false;
     }
 
     protected void execute() {
@@ -33,12 +39,19 @@ public class RotateBarrel extends Command {
         /*if (RobotMap.barrelLimitSwitch.get()) {
             Robot.barrel.stop();
         }*/
+
+        if (started) {
+            started = !RobotMap.barrelLimitSwitch.get();
+        } else {
+            finished = !RobotMap.barrelLimitSwitch.get();
+        }
+
     }
 
     protected boolean isFinished() {
         //return isTimedOut();
         //return ((Math.abs(RobotMap.barrelRotationEncoder.get() - initialCount) >= TICKS_PER_BARREL) || RobotMap.barrelLimitSwitch.get());
-        return RobotMap.barrelLimitSwitch.get();
+        return finished;
         //return false;
     }
 

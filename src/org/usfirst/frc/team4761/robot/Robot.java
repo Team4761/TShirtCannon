@@ -39,12 +39,12 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
 		shooter = new Shooter();
 		pneumatics = new PneumaticsSubsystem();
 		barrel = new Barrel();
 		drivetrain = new Drivetrain();
 		gasGo = new GasGo();
+		oi = new OI();
 		//adjustAngle = new AdjustShooterAngle();
     }
 	
@@ -105,34 +105,14 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
 
 		// This location is temporary
-		Barrel.controller.setPID(SmartDashboard.getNumber("RotationP", 0), SmartDashboard.getNumber("RotationI", 0), SmartDashboard.getNumber("RotationD", 0));
-		Barrel.controller.setSetpoint(SmartDashboard.getNumber("RotationSetpoint", 0));
+		//Barrel.controller.setPID(SmartDashboard.getNumber("RotationP", 0), SmartDashboard.getNumber("RotationI", 0), SmartDashboard.getNumber("RotationD", 0));
+		//Barrel.controller.setSetpoint(SmartDashboard.getNumber("RotationSetpoint", 0));
 
-		if (SmartDashboard.getBoolean("RotationPIDGo", false) && Barrel.controller.isEnabled()) {
+		/*if (SmartDashboard.getBoolean("RotationPIDGo", false) && Barrel.controller.isEnabled()) {
 			Barrel.controller.enable();
 		} else {
 			Barrel.controller.disable();
-		}
-
-		if (OI.joystick.getRawButton(1)) {
-			new AdjustShooterAngle(ZAxisRelativeDirection.DOWN);
-		}
-
-		if (OI.joystick.getRawButton(4)) {
-			new AdjustShooterAngle(ZAxisRelativeDirection.UP);
-		}
-
-		if (OI.joystick.getRawButton(2)) {
-			new RotateBarrel(XAxisRelativeDirection.RIGHT);
-		}
-
-		if (OI.joystick.getRawButton(3)) {
-			new RotateBarrel(XAxisRelativeDirection.LEFT);
-		}
-
-		if (OI.joystick.getRawButton(6)) {
-			new Shoot();
-		}
+		}*/
 
 		SmartDashboard.putNumber("Encoder Value", RobotMap.barrelRotationEncoder.get());
 		SmartDashboard.putNumber("Encoder Value2", RobotMap.barrelRotationEncoder.get());

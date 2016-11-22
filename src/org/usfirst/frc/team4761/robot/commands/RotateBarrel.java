@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4761.robot.commands;
 
-import javafx.scene.transform.Rotate;
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.XAxisRelativeDirection;
@@ -11,37 +10,36 @@ import edu.wpi.first.wpilibj.command.Command;
  * A Command that rotates the Barrel
  * @author Jake Backer
  */
+
 public class RotateBarrel extends Command {
 
-	XAxisRelativeDirection direction;
+	private XAxisRelativeDirection direction;
 
-    boolean stop;
+    //private double initialCount;
+    //private final double TICKS_PER_BARREL = 442.0;
 	
     public RotateBarrel(XAxisRelativeDirection direction) {
         requires(Robot.barrel);
         this.direction = direction;
     }
 
-    public RotateBarrel(boolean stop) {
-        this.stop = stop;
-    }
-
     protected void initialize() {
-        setTimeout(1);
+        //setTimeout(1);
+        //initialCount = RobotMap.barrelRotationEncoder.get();
     }
 
     protected void execute() {
         Robot.barrel.rotate(direction);
-        System.out.println("PRINT");
-        /*if (stop) {
+        /*if (RobotMap.barrelLimitSwitch.get()) {
             Robot.barrel.stop();
-        } else {*/
-
-        //}
+        }*/
     }
 
     protected boolean isFinished() {
-        return isTimedOut();
+        //return isTimedOut();
+        //return ((Math.abs(RobotMap.barrelRotationEncoder.get() - initialCount) >= TICKS_PER_BARREL) || RobotMap.barrelLimitSwitch.get());
+        return RobotMap.barrelLimitSwitch.get();
+        //return false;
     }
 
     protected void end() {

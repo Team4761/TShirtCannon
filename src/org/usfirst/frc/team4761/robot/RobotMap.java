@@ -1,9 +1,6 @@
 package org.usfirst.frc.team4761.robot;
 
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.TalonSRX;
+import edu.wpi.first.wpilibj.*;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -26,4 +23,7 @@ public class RobotMap {
 	public static TalonSRX barrelAngleMotor = new TalonSRX(5);
 
 	public static Solenoid solenoid = new Solenoid(0);
+
+	public static DigitalInput barrelLimitSwitch = new DigitalInput(8);
+	
 }

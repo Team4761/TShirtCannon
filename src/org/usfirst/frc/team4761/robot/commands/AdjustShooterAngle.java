@@ -12,17 +12,11 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class AdjustShooterAngle extends Command {
 
-    ZAxisRelativeDirection direction;
-
-    boolean stop;
+    private ZAxisRelativeDirection direction;
 
     public AdjustShooterAngle(ZAxisRelativeDirection direction) {
     	requires(Robot.shooter);
         this.direction = direction;
-    }
-
-    public AdjustShooterAngle(boolean stop) {
-        this.stop = stop;
     }
 
     protected void initialize() {

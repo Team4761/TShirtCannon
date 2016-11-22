@@ -89,7 +89,6 @@ public class Robot extends IterativeRobot {
 		//SmartDashboard.putData(new RotateBarrel());
 		SmartDashboard.putData("Rotate Left", new RotateBarrel(XAxisRelativeDirection.LEFT));
 		SmartDashboard.putData("Rotate Right", new RotateBarrel(XAxisRelativeDirection.RIGHT));
-		SmartDashboard.putData("Rotate Stop", new RotateBarrel(true)); // Stop
 		SmartDashboard.putData("Start PID", new PIDGo());
 
 		SmartDashboard.putData("Angle Up", new AdjustShooterAngle(ZAxisRelativeDirection.UP));
@@ -136,6 +135,8 @@ public class Robot extends IterativeRobot {
 		}
 
 		SmartDashboard.putNumber("Encoder Value", RobotMap.barrelRotationEncoder.get());
+		SmartDashboard.putNumber("Encoder Value2", RobotMap.barrelRotationEncoder.get());
+		SmartDashboard.putBoolean("LimitSwitch Value", RobotMap.barrelLimitSwitch.get());
     }
     
     /**

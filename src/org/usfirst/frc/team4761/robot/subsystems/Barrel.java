@@ -6,7 +6,7 @@ import org.usfirst.frc.team4761.robot.XAxisRelativeDirection;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- * @author Simon Andrews and Jake Backer (but mostly Jake Backer)
+ * @author Simon Andrews, Jake Backer (but mostly Jake Backer)
  */
 public class Barrel extends Subsystem {
 

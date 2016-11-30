@@ -19,7 +19,7 @@ public class Drivetrain extends Subsystem {
     }
     
     public void driveTank(double leftValue, double rightValue) {
-    	RobotMap.robotDrive.tankDrive(leftValue, rightValue);
+    	RobotMap.robotDrive.tankDrive(-leftValue, -rightValue);
     }
     
     public void stop() {

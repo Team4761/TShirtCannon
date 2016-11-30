@@ -28,7 +28,7 @@ public class Rotaterotate extends Command {
     }
 
     protected void end() {
-
+        Robot.barrel.stop();
     }
 
     protected void interrupted() {

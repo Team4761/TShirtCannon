@@ -11,9 +11,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class GasGo extends Command {
 
-	double translate;
-	double rotate;
-	
+	double left;
+
     public GasGo() {
         requires(Robot.drivetrain);
     }
@@ -22,10 +21,10 @@ public class GasGo extends Command {
     }
 
     protected void execute() {
-    	translate = OI.joystick.getRawAxis(1);
-    	rotate = OI.joystick.getRawAxis(4);
-    	
-    	Robot.drivetrain.driveArcade(translate, -rotate);
+        left = OI.joystick.getRawAxis(1);
+        right = OI.joystick2.getRawAxis(5);
+
+        Robot.drivetrain.driveTank(left, right);
     }
 
     protected boolean isFinished() {
@@ -33,9 +32,10 @@ public class GasGo extends Command {
     }
 
     protected void end() {
-    	Robot.drivetrain.stop();
+        Robot.drivetrain.stop();
     }
 
+    double right;
     protected void interrupted() {
     	end();
     }

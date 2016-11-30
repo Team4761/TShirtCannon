@@ -10,24 +10,25 @@ import org.usfirst.frc.team4761.robot.commands.*;
  */
 public class OI {
 	public static Joystick joystick = new Joystick(0);
+	public static Joystick joystick2 = new Joystick(1);
 
-	JoystickButton aButton = new JoystickButton(joystick, 1);
-	JoystickButton bButton = new JoystickButton(joystick, 2);
-	JoystickButton xButton = new JoystickButton(joystick, 3);
-	JoystickButton yButton = new JoystickButton(joystick, 4);
+	JoystickButton aButton = new JoystickButton(joystick2, 1);
+	JoystickButton bButton = new JoystickButton(joystick2, 2);
+	JoystickButton xButton = new JoystickButton(joystick2, 3);
+	JoystickButton yButton = new JoystickButton(joystick2, 4);
 	JoystickButton leftBumperButton = new JoystickButton(joystick, 5);
-	JoystickButton rightBumperButton = new JoystickButton(joystick, 6);
-	JoystickButton selectButton = new JoystickButton(joystick, 7);
-	JoystickButton startButton = new JoystickButton(joystick, 8);
+	//JoystickButton rightBumperButton = new JoystickButton(joystick, 6);
+	JoystickButton selectButton = new JoystickButton(joystick2, 7);
+	JoystickButton startButton = new JoystickButton(joystick2, 8);
 
 	public OI() {
 		leftBumperButton.whenReleased(new Shoot());
-		rightBumperButton.whenReleased(new ShootNRotate());
-		bButton.whenReleased(new RotateBarrel(XAxisRelativeDirection.RIGHT));
+		//rightBumperButton.whenReleased(new ShootNRotate());
+		//bButton.whenReleased(new RotateBarrel(XAxisRelativeDirection.RIGHT));
 		xButton.whenReleased(new RotateBarrel(XAxisRelativeDirection.LEFT));
 		yButton.whenReleased(new AdjustShooterAngle(ZAxisRelativeDirection.UP));
 		aButton.whenReleased(new AdjustShooterAngle(ZAxisRelativeDirection.DOWN));
 		selectButton.whileHeld(new Rotaterotate(XAxisRelativeDirection.LEFT));
-		startButton.whileHeld(new Rotaterotate(XAxisRelativeDirection.RIGHT));
+		//startButton.whileHeld(new Rotaterotate(XAxisRelativeDirection.RIGHT));
 	}
 }

@@ -9,18 +9,18 @@ import edu.wpi.first.wpilibj.*;
  * floating around.
  */
 public class RobotMap {
-	public static TalonSRX frontLeft = new TalonSRX(3);
-	public static TalonSRX frontRight = new TalonSRX(2);
-	public static TalonSRX backLeft = new TalonSRX(1);
-	public static TalonSRX backRight = new TalonSRX(0);
+	public static Victor frontLeft = new Victor(3);
+	public static Victor frontRight = new Victor(2);
+	public static Victor backLeft = new Victor(1);
+	public static Victor backRight = new Victor(0);
 	
 	public static RobotDrive robotDrive = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
 	
 	// Dummy ports on the encoders for now
 	public static Encoder barrelRotationEncoder = new Encoder(8, 9);
 	
-	public static TalonSRX barrelRotationMotor = new TalonSRX(4);
-	public static TalonSRX barrelAngleMotor = new TalonSRX(5);
+	public static Victor barrelRotationMotor = new Victor(4);
+	public static Victor barrelAngleMotor = new Victor(5);
 
 	public static Solenoid solenoid = new Solenoid(0);
 

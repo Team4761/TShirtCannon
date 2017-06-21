@@ -20,7 +20,7 @@ public class Drivetrain extends Subsystem {
     public void driveArcade(double leftValue, double rightValue) {
     	double speedMultiplier = SmartDashboard.getNumber("Driving Speed", DEFAULT_SPEED);
 
-    	RobotMap.robotDrive.arcadeDrive(-leftValue*speedMultiplier, rightValue*speedMultiplier);
+    	RobotMap.robotDrive.arcadeDrive(leftValue*speedMultiplier, rightValue*speedMultiplier);
     }
 
     /*

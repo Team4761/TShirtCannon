@@ -1,10 +1,9 @@
-package org.usfirst.frc.team4761.robot.commands;
+package org.robockets.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team4761.robot.Robot;
-import org.usfirst.frc.team4761.robot.RobotMap;
+import org.robockets.robot.Robot;
+import org.robockets.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -18,7 +17,7 @@ public class Shoot extends Command {
 
     protected void initialize() {
         Robot.shooter.shoot(RobotMap.solenoid);
-        setTimeout(SmartDashboard.getNumber("SolenoidTimeout"));
+        setTimeout(SmartDashboard.getNumber("SolenoidTimeout", 1));
     }
 
     protected void execute() {

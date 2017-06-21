@@ -1,7 +1,12 @@
-package org.usfirst.frc.team4761.robot;
+package org.robockets.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import org.robockets.robot.commands.AdjustShooterAngle;
+import org.robockets.robot.commands.RotateBarrel;
+import org.robockets.robot.commands.Rotaterotate;
+import org.robockets.robot.commands.Shoot;
+import org.robockets.robot.commands.ShootNRotate;
 import org.usfirst.frc.team4761.robot.commands.*;
 
 /**
@@ -25,8 +30,8 @@ public class OI {
 		rightBumperButton.whenReleased(new ShootNRotate());
 		bButton.whenReleased(new RotateBarrel(XAxisRelativeDirection.RIGHT));
 		xButton.whenReleased(new RotateBarrel(XAxisRelativeDirection.LEFT));
-		yButton.whenReleased(new AdjustShooterAngle(ZAxisRelativeDirection.UP));
-		aButton.whenReleased(new AdjustShooterAngle(ZAxisRelativeDirection.DOWN));
+		yButton.whileHeld(new AdjustShooterAngle(ZAxisRelativeDirection.UP));
+		aButton.whileHeld(new AdjustShooterAngle(ZAxisRelativeDirection.DOWN));
 		selectButton.whileHeld(new Rotaterotate(XAxisRelativeDirection.LEFT));
 		startButton.whileHeld(new Rotaterotate(XAxisRelativeDirection.RIGHT));
 	}

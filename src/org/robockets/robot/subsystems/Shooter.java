@@ -1,5 +1,7 @@
-package org.usfirst.frc.team4761.robot.subsystems;
+package org.robockets.robot.subsystems;
 
+import org.robockets.robot.RobotMap;
+import org.robockets.robot.ZAxisRelativeDirection;
 import org.usfirst.frc.team4761.robot.*;
 
 import edu.wpi.first.wpilibj.Solenoid;
@@ -26,9 +28,9 @@ public class Shooter extends Subsystem {
     public void changeAngle(ZAxisRelativeDirection direction) {
 
 		if (direction == ZAxisRelativeDirection.UP) {
-			RobotMap.barrelAngleMotor.set(0.2);
+			RobotMap.barrelAngleMotor.set(0.5);
 		} else if (direction == ZAxisRelativeDirection.DOWN) {
-			RobotMap.barrelAngleMotor.set(-0.2);
+			RobotMap.barrelAngleMotor.set(-0.5);
 		}
 
 		/*if (OI.joystick.getRawButton(1)) {

@@ -1,7 +1,7 @@
-package org.usfirst.frc.team4761.robot.subsystems;
+package org.robockets.robot.subsystems;
 
-import org.usfirst.frc.team4761.robot.RobotMap;
-import org.usfirst.frc.team4761.robot.XAxisRelativeDirection;
+import org.robockets.robot.RobotMap;
+import org.robockets.robot.XAxisRelativeDirection;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -19,6 +19,7 @@ public class Barrel extends Subsystem {
     }
 	
 	public void rotate(XAxisRelativeDirection direction) {
+		System.out.println(direction);
 		if(direction == XAxisRelativeDirection.LEFT) {
 			RobotMap.barrelRotationMotor.set(0.7);
 		} else if (direction == XAxisRelativeDirection.RIGHT) {

@@ -1,8 +1,8 @@
-package org.usfirst.frc.team4761.robot.commands;
+package org.robockets.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team4761.robot.Robot;
-import org.usfirst.frc.team4761.robot.XAxisRelativeDirection;
+import org.robockets.robot.Robot;
+import org.robockets.robot.XAxisRelativeDirection;
 
 /**
  * @author Jake Backer

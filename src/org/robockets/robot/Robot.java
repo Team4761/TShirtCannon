@@ -1,11 +1,15 @@
-package org.usfirst.frc.team4761.robot;
+package org.robockets.robot;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.robockets.robot.commands.AdjustShooterAngle;
+import org.robockets.robot.commands.GasGo;
+import org.robockets.robot.commands.RotateBarrel;
+import org.robockets.robot.commands.Shoot;
+import org.robockets.robot.subsystems.Barrel;
+import org.robockets.robot.subsystems.Drivetrain;
+import org.robockets.robot.subsystems.Shooter;
 import org.usfirst.frc.team4761.robot.commands.*;
-import org.usfirst.frc.team4761.robot.subsystems.Barrel;
-import org.usfirst.frc.team4761.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team4761.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -41,7 +45,13 @@ public class Robot extends IterativeRobot {
 		drivetrain = new Drivetrain();
 		gasGo = new GasGo();
 		oi = new OI();
+
+		SmartDashboard.putNumber("Driving Speed", Drivetrain.DEFAULT_SPEED);
     }
+
+    public void robotPeriodic() {
+    	SmartDashboard.putBoolean("LimitSwitch", RobotMap.barrelLimitSwitch.get());
+	}
 	
 	/**
      * This function is called once each time the robot enters Disabled mode.

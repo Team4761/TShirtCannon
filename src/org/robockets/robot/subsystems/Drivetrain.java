@@ -1,6 +1,7 @@
-package org.usfirst.frc.team4761.robot.subsystems;
+package org.robockets.robot.subsystems;
 
-import org.usfirst.frc.team4761.robot.RobotMap;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.robockets.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -10,20 +11,25 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Drivetrain extends Subsystem {
 
+	public static final double DEFAULT_SPEED = 0.75;
+
     public void initDefaultCommand() {
     	
     }
     
     public void driveArcade(double leftValue, double rightValue) {
-    	RobotMap.robotDrive.arcadeDrive(-leftValue, rightValue);
+    	double speedMultiplier = SmartDashboard.getNumber("Driving Speed", DEFAULT_SPEED);
+
+    	RobotMap.robotDrive.arcadeDrive(-leftValue*speedMultiplier, rightValue*speedMultiplier);
     }
-    
+
+    /*
     public void driveTank(double leftValue, double rightValue) {
     	RobotMap.robotDrive.tankDrive(leftValue, rightValue);
-    }
+    }*/
     
     public void stop() {
-    	driveTank(0, 0);
+    	driveArcade(0, 0);
     }
 }
 

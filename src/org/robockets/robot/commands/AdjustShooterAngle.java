@@ -1,8 +1,8 @@
-package org.usfirst.frc.team4761.robot.commands;
+package org.robockets.robot.commands;
 
-import org.usfirst.frc.team4761.robot.Robot;
-import org.usfirst.frc.team4761.robot.RobotMap;
-import org.usfirst.frc.team4761.robot.ZAxisRelativeDirection;
+import org.robockets.robot.Robot;
+import org.robockets.robot.RobotMap;
+import org.robockets.robot.ZAxisRelativeDirection;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -20,7 +20,7 @@ public class AdjustShooterAngle extends Command {
     }
 
     protected void initialize() {
-        setTimeout(1);
+//        setTimeout(0.4);
     }
 
     protected void execute() {
@@ -28,7 +28,8 @@ public class AdjustShooterAngle extends Command {
     }
 
     protected boolean isFinished() {
-        return isTimedOut();
+       // return isTimedOut();
+        return false;
     }
 
     protected void end() {

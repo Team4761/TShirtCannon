@@ -7,7 +7,6 @@ import org.robockets.robot.commands.RotateBarrel;
 import org.robockets.robot.commands.Rotaterotate;
 import org.robockets.robot.commands.Shoot;
 import org.robockets.robot.commands.ShootNRotate;
-import org.usfirst.frc.team4761.robot.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator

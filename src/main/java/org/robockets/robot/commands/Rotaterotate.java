@@ -12,6 +12,7 @@ public class Rotaterotate extends Command {
     XAxisRelativeDirection direction;
 
     public Rotaterotate(XAxisRelativeDirection direction) {
+        requires(Robot.barrel);
         this.direction = direction;
     }
 
@@ -28,7 +29,7 @@ public class Rotaterotate extends Command {
     }
 
     protected void end() {
-
+        Robot.barrel.stop();
     }
 
     protected void interrupted() {

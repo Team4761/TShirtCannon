@@ -3,7 +3,7 @@ package org.robockets.robot;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.robockets.robot.commands.AdjustShooterAngle;
-import org.robockets.robot.commands.GasGo;
+import org.robockets.robot.commands.Joyride;
 import org.robockets.robot.commands.RotateBarrel;
 import org.robockets.robot.commands.Shoot;
 import org.robockets.robot.subsystems.Barrel;
@@ -42,7 +42,7 @@ public class Robot extends IterativeRobot {
 		shooter = new Shooter();
 		barrel = new Barrel();
 		drivetrain = new Drivetrain();
-		gasGo = new GasGo();
+		gasGo = new Joyride();
 		oi = new OI();
 
 		SmartDashboard.putNumber("Driving Speed", Drivetrain.DEFAULT_SPEED);

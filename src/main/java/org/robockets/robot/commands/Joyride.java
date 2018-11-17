@@ -9,12 +9,12 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author Brian Shin
  * Drive command, connects the user input with the robot.
  */
-public class GasGo extends Command {
+public class Joyride extends Command {
 
 	double translate;
 	double rotate;
 	
-    public GasGo() {
+    public Joyride() {
         requires(Robot.drivetrain);
     }
 
